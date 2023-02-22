@@ -17,3 +17,4 @@ include ':app'
 
 include ':common:core'
 include ':common:logger'
+include ':common:coreui'
