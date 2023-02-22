@@ -5,8 +5,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.usdaves.core.TaskyDispatchers
-import io.usdaves.core.domain.matcher.EmailMatcher
 import io.usdaves.core.internal.matcher.AndroidEmailMatcher
+import io.usdaves.core.matcher.EmailMatcher
 import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
 

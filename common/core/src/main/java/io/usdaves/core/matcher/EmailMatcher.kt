@@ -1,4 +1,4 @@
-package io.usdaves.core.domain.matcher
+package io.usdaves.core.matcher
 
 // Created by usdaves(Usmon Abdurakhmanov) on 2/4/2023
 
