@@ -1,12 +1,15 @@
 package io.usdaves.core.inject
 
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.usdaves.core.TaskyDispatchers
 import io.usdaves.core.internal.matcher.AndroidEmailMatcher
+import io.usdaves.core.internal.remote.FirebaseProfileApi
 import io.usdaves.core.matcher.EmailMatcher
+import io.usdaves.core.remote.ProfileApi
 import io.usdaves.logger.Logger
 import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
@@ -28,4 +31,9 @@ object CoreModule {
 
   @Provides
   fun provideEmailMatcher(logger: Logger): EmailMatcher = AndroidEmailMatcher(logger)
+
+  @Provides
+  fun provideProfileApi(firestore: FirebaseFirestore, logger: Logger): ProfileApi {
+    return FirebaseProfileApi(firestore, logger)
+  }
 }
