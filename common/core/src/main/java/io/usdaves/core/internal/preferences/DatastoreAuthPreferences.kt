@@ -1,0 +1,30 @@
+package io.usdaves.core.internal.preferences
+
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
+import io.usdaves.core.preferences.AuthPreferences
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+
+// Created by usdaves(Usmon Abdurakhmanov) on 2/18/2023
+
+internal class DatastoreAuthPreferences(
+  private val dataStore: DataStore<Preferences>,
+) : AuthPreferences {
+
+  override val isAuthenticated: Flow<Boolean> = dataStore.data.map { preference ->
+    preference[AUTH_KEY] ?: false
+  }
+
+  override suspend fun setAuthenticated(isAuthenticated: Boolean) {
+    dataStore.edit { preferences ->
+      preferences[AUTH_KEY] = isAuthenticated
+    }
+  }
+
+  private companion object {
+    val AUTH_KEY = booleanPreferencesKey("is_authenticated_pref_key")
+  }
+}
