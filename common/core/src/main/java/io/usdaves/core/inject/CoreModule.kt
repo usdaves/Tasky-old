@@ -8,8 +8,11 @@ import dagger.hilt.components.SingletonComponent
 import io.usdaves.core.TaskyDispatchers
 import io.usdaves.core.internal.matcher.AndroidEmailMatcher
 import io.usdaves.core.internal.remote.FirebaseProfileApi
+import io.usdaves.core.internal.repository.ProdProfileRepository
 import io.usdaves.core.matcher.EmailMatcher
+import io.usdaves.core.preferences.ProfilePreferences
 import io.usdaves.core.remote.ProfileApi
+import io.usdaves.core.repository.ProfileRepository
 import io.usdaves.logger.Logger
 import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
@@ -36,4 +39,11 @@ object CoreModule {
   fun provideProfileApi(firestore: FirebaseFirestore, logger: Logger): ProfileApi {
     return FirebaseProfileApi(firestore, logger)
   }
+
+  @Provides
+  fun provideProfileRepository(
+    profileApi: ProfileApi,
+    profilePreferences: ProfilePreferences,
+    logger: Logger,
+  ): ProfileRepository = ProdProfileRepository(profileApi, profilePreferences, logger)
 }
