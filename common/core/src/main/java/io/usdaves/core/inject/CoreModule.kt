@@ -36,12 +36,12 @@ object CoreModule {
   fun provideEmailMatcher(logger: Logger): EmailMatcher = AndroidEmailMatcher(logger)
 
   @Provides
-  fun provideProfileApi(firestore: FirebaseFirestore, logger: Logger): ProfileApi {
+  internal fun provideProfileApi(firestore: FirebaseFirestore, logger: Logger): ProfileApi {
     return FirebaseProfileApi(firestore, logger)
   }
 
   @Provides
-  fun provideProfileRepository(
+  internal fun provideProfileRepository(
     profileApi: ProfileApi,
     profilePreferences: ProfilePreferences,
     logger: Logger,

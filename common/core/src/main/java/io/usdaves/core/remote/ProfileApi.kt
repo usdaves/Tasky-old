@@ -2,7 +2,7 @@ package io.usdaves.core.remote
 
 // Created by usdaves(Usmon Abdurakhmanov) on 2/18/2023
 
-interface ProfileApi {
+internal interface ProfileApi {
 
   suspend fun fetchUserProfileById(userId: String): UserProfile
 
