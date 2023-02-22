@@ -5,6 +5,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.usdaves.core.TaskyDispatchers
+import io.usdaves.core.domain.matcher.EmailMatcher
+import io.usdaves.core.internal.matcher.AndroidEmailMatcher
 import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
 
@@ -22,4 +24,7 @@ object CoreModule {
     Default = Dispatchers.Default,
     Unconfined = Dispatchers.Unconfined,
   )
+
+  @Provides
+  fun provideEmailMatcher(): EmailMatcher = AndroidEmailMatcher()
 }
