@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-  namespace 'io.usdaves.core'
+  namespace 'io.usdaves.tasky'
   compileSdk 33
 
   defaultConfig {
@@ -34,7 +34,6 @@ android {
 }
 
 dependencies {
-  implementation(libs.androidx.corektx)
   implementation(libs.kotlinx.coroutines.core)
   implementation(libs.androidx.datastore)
   implementation(libs.hilt.android)
