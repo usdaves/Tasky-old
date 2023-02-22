@@ -1,10 +1,6 @@
-@file:OptIn(ExperimentalContracts::class)
-
 package io.usdaves.core.util
 
 import io.usdaves.core.Result
-import kotlin.contracts.ExperimentalContracts
-import kotlin.contracts.contract
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -38,16 +34,8 @@ inline fun <T> resultOf(block: () -> T): Result<T> = try {
   Result.failure(throwable)
 }
 
-fun Result<*>.isSuccess(): Boolean {
-  contract {
-    returns() implies (this@isSuccess is Result.Success<*>)
-  }
-  return this is Result.Success<*>
-}
+inline val Result<*>.isSuccess: Boolean
+  get() = this is Result.Success<*>
 
-fun Result<*>.isFailure(): Boolean {
-  contract {
-    returns() implies (this@isFailure is Result.Failure)
-  }
-  return this is Result.Failure
-}
+inline val Result<*>.isFailure: Boolean
+  get() = this is Result.Failure
