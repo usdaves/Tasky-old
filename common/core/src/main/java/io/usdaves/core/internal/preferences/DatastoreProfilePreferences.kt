@@ -5,6 +5,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import io.usdaves.core.preferences.ProfilePreferences
+import io.usdaves.logger.Logger
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -12,7 +13,13 @@ import kotlinx.coroutines.flow.map
 
 internal class DatastoreProfilePreferences(
   private val dataStore: DataStore<Preferences>,
+  logger: Logger,
 ) : ProfilePreferences {
+
+  init {
+    // Just to monitor lifetime of the dependencies, because they're not singletons
+    logger.i("DatastoreProfilePreferences instance created")
+  }
 
   override val profile: Flow<ProfilePreferences.Profile> = dataStore.data.map { preferences ->
     ProfilePreferences.Profile(

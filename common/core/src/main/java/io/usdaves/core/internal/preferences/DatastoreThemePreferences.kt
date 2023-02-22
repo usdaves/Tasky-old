@@ -5,6 +5,8 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import io.usdaves.core.preferences.ThemePreferences
+import io.usdaves.core.preferences.ThemePreferences.Theme
+import io.usdaves.logger.Logger
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -12,14 +14,20 @@ import kotlinx.coroutines.flow.map
 
 internal class DatastoreThemePreferences(
   private val dataStore: DataStore<Preferences>,
+  logger: Logger,
 ) : ThemePreferences {
 
-  override val themeFlow: Flow<ThemePreferences.Theme> = dataStore.data.map { preferences ->
-    val themeIndex = preferences[THEME_KEY] ?: ThemePreferences.Theme.SYSTEM.ordinal
-    ThemePreferences.Theme.values()[themeIndex]
+  init {
+    // Just to monitor lifetime of the dependencies, because they're not singletons
+    logger.i("DatastoreThemePreferences instance created")
   }
 
-  override suspend fun setTheme(theme: ThemePreferences.Theme) {
+  override val themeFlow: Flow<Theme> = dataStore.data.map { preferences ->
+    val themeIndex = preferences[THEME_KEY] ?: Theme.SYSTEM.ordinal
+    Theme.values()[themeIndex]
+  }
+
+  override suspend fun setTheme(theme: Theme) {
     dataStore.edit { preferences ->
       preferences[THEME_KEY] = theme.ordinal
     }

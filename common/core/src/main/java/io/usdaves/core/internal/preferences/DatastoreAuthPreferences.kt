@@ -5,6 +5,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import io.usdaves.core.preferences.AuthPreferences
+import io.usdaves.logger.Logger
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -12,7 +13,13 @@ import kotlinx.coroutines.flow.map
 
 internal class DatastoreAuthPreferences(
   private val dataStore: DataStore<Preferences>,
+  logger: Logger,
 ) : AuthPreferences {
+
+  init {
+    // Just to monitor lifetime of the dependencies, because they're not singletons
+    logger.i("DatastoreAuthPreferences instance created")
+  }
 
   override val isAuthenticated: Flow<Boolean> = dataStore.data.map { preference ->
     preference[AUTH_KEY] ?: false
