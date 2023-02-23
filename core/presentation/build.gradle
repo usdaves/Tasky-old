@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-  namespace 'io.usdaves.core'
+  namespace 'io.usdaves.core.presentation'
   compileSdk 33
 
   defaultConfig {

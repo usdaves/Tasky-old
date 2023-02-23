@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-  namespace 'io.usdaves.core'
+  namespace 'io.usdaves.core.data'
   compileSdk 33
 
   defaultConfig {

@@ -18,6 +18,7 @@ datastore = "1.0.0"
 timber = "5.0.1"
 firebase-auth = "21.1.0"
 firebase-firestore = "24.4.1"
+bindables = "1.1.0"
 
 # Testing library versions
 junit = "4.13.2"
@@ -40,6 +41,7 @@ androidx-datastore = { group = "androidx.datastore", name = "datastore-preferenc
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebase-auth" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebase-firestore" }
+skydoves-bindables = { group = "com.github.skydoves", name = "bindables", version.ref = "bindables" }
 
 # Libraries for testing
 junit = { group = "junit", name = "junit", version.ref = "junit" }
