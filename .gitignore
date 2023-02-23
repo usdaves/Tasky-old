@@ -10,4 +10,4 @@
 local.properties
 
 # Firebase config file
-/common/core/google-services.json
+/core/firebase/google-services.json

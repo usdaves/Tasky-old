@@ -42,4 +42,5 @@ dependencies {
 
   implementation(project(":common:logger"))
   implementation(project(":core:domain"))
+  implementation(project(":core:firebase"))
 }
