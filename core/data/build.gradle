@@ -40,7 +40,7 @@ dependencies {
 
   implementation(libs.firebase.firestore)
 
-  implementation(project(":common:logger"))
+  implementation(project(":core:logger"))
   implementation(project(":core:domain"))
   implementation(project(":core:firebase"))
 }
