@@ -38,6 +38,8 @@ dependencies {
   implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
 
+  implementation(libs.firebase.firestore)
+
   implementation(project(":common:logger"))
   implementation(project(":core:domain"))
 }
