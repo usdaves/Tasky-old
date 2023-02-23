@@ -20,7 +20,13 @@
   <string name="empty_display_name">Display name could not be empty!</string>
   <string name="empty_email">Email could not be empty!</string>
   <string name="empty_password">Password could not be empty!</string>
+  <string name="short_display_name">Display name must contains at least %d characters</string>
+  <string name="short_password">Password must contains at least %d characters</string>
+  <string name="long_display_name">Display name must contains at most %d characters</string>
+  <string name="long_password">Password must contains at most %d characters</string>
   <string name="invalid_credentials">Email or password went wrong. Please, try again!</string>
   <string name="no_network_connection">Could not connect to the server. Please, check you internet connection!</string>
   <string name="signing_with_google_not_supported">Signing with Google not supported yet. Please, use your email address to sign in/up</string>
+  <string name="invalid_email">Email is not valid. Please, enter a valid email address.</string>
+  <string name="email_in_use">This email is already in use. Please, use another one, or go to Sign In screen.</string>
 </resources>
