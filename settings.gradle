@@ -16,7 +16,6 @@ rootProject.name = "Tasky"
 include ':app'
 
 include ':common:logger'
-include ':common:coreui'
 include ':core:domain'
 include ':core:data'
 include ':core:presentation'
