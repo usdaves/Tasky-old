@@ -36,9 +36,10 @@ android {
 }
 
 dependencies {
-  implementation(libs.androidx.corektx)
-  implementation(libs.androidx.appcompat)
-  implementation(libs.google.material)
-  implementation(libs.androidx.activity)
-  implementation(libs.androidx.fragment)
+  api(libs.androidx.corektx)
+  api(libs.androidx.appcompat)
+  api(libs.google.material)
+  api(libs.androidx.activity)
+  api(libs.androidx.fragment)
+  api(libs.skydoves.bindables)
 }

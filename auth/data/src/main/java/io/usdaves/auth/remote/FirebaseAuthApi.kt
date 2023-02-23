@@ -4,12 +4,11 @@ import com.google.firebase.auth.FirebaseAuth
 import io.usdaves.core.Result
 import io.usdaves.core.util.resultOf
 import io.usdaves.logger.Logger
-import javax.inject.Inject
 import kotlinx.coroutines.tasks.await
 
 // Created by usdaves(Usmon Abdurakhmanov) on 2/17/2023
 
-internal class FirebaseAuthApi @Inject constructor(
+internal class FirebaseAuthApi(
   private val firebaseAuth: FirebaseAuth,
   logger: Logger,
 ) : AuthApi {

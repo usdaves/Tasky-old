@@ -36,10 +36,8 @@ dependencies {
   implementation(project(":core:data"))
   implementation(project(":core:domain"))
   implementation(project(":core:logger"))
+  implementation(project(":core:firebase"))
 
   implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
-
-  implementation(libs.firebase.auth)
-  implementation(libs.firebase.firestore)
 }

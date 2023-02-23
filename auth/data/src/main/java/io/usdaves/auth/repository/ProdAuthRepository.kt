@@ -11,11 +11,10 @@ import io.usdaves.core.util.isSuccess
 import io.usdaves.core.util.map
 import io.usdaves.core.util.onEach
 import io.usdaves.logger.Logger
-import javax.inject.Inject
 
 // Created by usdaves(Usmon Abdurakhmanov) on 2/17/2023
 
-internal class ProdAuthRepository @Inject constructor(
+internal class ProdAuthRepository(
   private val authApi: AuthApi,
   private val profileRepository: ProfileRepository,
   private val authPreferences: AuthPreferences,
