@@ -10,6 +10,7 @@ import io.usdaves.core.repository.ProfileRepository
 import io.usdaves.core.util.isSuccess
 import io.usdaves.core.util.map
 import io.usdaves.core.util.onEach
+import io.usdaves.logger.Logger
 import javax.inject.Inject
 
 // Created by usdaves(Usmon Abdurakhmanov) on 2/17/2023
@@ -18,9 +19,16 @@ internal class ProdAuthRepository @Inject constructor(
   private val authApi: AuthApi,
   private val profileRepository: ProfileRepository,
   private val authPreferences: AuthPreferences,
+  private val logger: Logger,
 ) : AuthRepository {
 
+  init {
+    // Just to monitor lifetime of the dependencies
+    logger.i("ProdAuthRepository instance created")
+  }
+
   override suspend fun signIn(email: String, password: String): SignInResult {
+    logger.d("SignIn function invoked with Email: $email, Password: $password")
     val signInResult = authApi
       .signIn(email, password)
       .map { userId ->
@@ -35,6 +43,7 @@ internal class ProdAuthRepository @Inject constructor(
   }
 
   override suspend fun signUp(displayName: String, email: String, password: String): SignUpResult {
+    logger.d("SignUp function invoked with DisplayName: $displayName, Email: $email, Password: $password")
     val signUpResult = authApi
       .signUp(email, password)
       .map { userId ->
@@ -57,7 +66,7 @@ internal class ProdAuthRepository @Inject constructor(
       }
     }
 
-    is FirebaseFirestoreException -> SignInResult.UnknownError("Error occurred while using FirebaseAuth: ${throwable.code.name}")
+    is FirebaseFirestoreException -> SignInResult.UnknownError("Error occurred while using FirebaseFirestore: ${throwable.code.name}")
     else -> SignInResult.UnknownError(throwable.localizedMessage ?: "Unknown error occurred")
   }
 
@@ -70,7 +79,7 @@ internal class ProdAuthRepository @Inject constructor(
       }
     }
 
-    is FirebaseFirestoreException -> SignUpResult.UnknownError("Error occurred while using FirebaseAuth: ${throwable.code.name}")
+    is FirebaseFirestoreException -> SignUpResult.UnknownError("Error occurred while using FirebaseFirestore: ${throwable.code.name}")
     else -> SignUpResult.UnknownError(throwable.localizedMessage ?: "Unknown error occurred")
   }
 }

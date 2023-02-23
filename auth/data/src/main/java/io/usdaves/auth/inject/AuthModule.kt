@@ -11,6 +11,7 @@ import io.usdaves.auth.repository.AuthRepository
 import io.usdaves.auth.repository.ProdAuthRepository
 import io.usdaves.core.preferences.AuthPreferences
 import io.usdaves.core.repository.ProfileRepository
+import io.usdaves.logger.Logger
 
 // Created by usdaves(Usmon Abdurakhmanov) on 2/17/2023
 
@@ -23,8 +24,12 @@ object AuthModule {
     authApi: AuthApi,
     profileRepository: ProfileRepository,
     authPreferences: AuthPreferences,
-  ): AuthRepository = ProdAuthRepository(authApi, profileRepository, authPreferences)
+    logger: Logger,
+  ): AuthRepository = ProdAuthRepository(authApi, profileRepository, authPreferences, logger)
 
   @Provides
-  fun provideAuthApi(firebaseAuth: FirebaseAuth): AuthApi = FirebaseAuthApi(firebaseAuth)
+  fun provideAuthApi(
+    firebaseAuth: FirebaseAuth,
+    logger: Logger,
+  ): AuthApi = FirebaseAuthApi(firebaseAuth, logger)
 }

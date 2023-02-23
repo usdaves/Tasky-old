@@ -3,6 +3,7 @@ package io.usdaves.auth.remote
 import com.google.firebase.auth.FirebaseAuth
 import io.usdaves.core.Result
 import io.usdaves.core.util.resultOf
+import io.usdaves.logger.Logger
 import javax.inject.Inject
 import kotlinx.coroutines.tasks.await
 
@@ -10,7 +11,13 @@ import kotlinx.coroutines.tasks.await
 
 internal class FirebaseAuthApi @Inject constructor(
   private val firebaseAuth: FirebaseAuth,
+  logger: Logger,
 ) : AuthApi {
+
+  init {
+    // Just to monitor lifetime of the dependencies
+    logger.i("FirebaseAuthApi instance created")
+  }
 
   override suspend fun signIn(email: String, password: String): Result<String> = resultOf {
     val authResult = firebaseAuth.signInWithEmailAndPassword(email, password).await()
