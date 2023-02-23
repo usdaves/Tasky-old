@@ -5,12 +5,14 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.skydoves.bindables.BindingFragment
+import dagger.hilt.android.AndroidEntryPoint
 import io.usdaves.auth.presentation.R
 import io.usdaves.auth.presentation.databinding.FragmentSignUpBinding
 import io.usdaves.core.util.collectLatest
 
 // Created by usdaves(Usmon Abdurakhmanov) on 2/23/2023
 
+@AndroidEntryPoint
 class SignUpFragment : BindingFragment<FragmentSignUpBinding>(R.layout.fragment_sign_up) {
 
   private val viewModel: SignUpViewModel by viewModels()
