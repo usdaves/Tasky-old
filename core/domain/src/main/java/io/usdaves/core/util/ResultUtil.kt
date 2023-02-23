@@ -1,6 +1,9 @@
 package io.usdaves.core.util
 
 import io.usdaves.core.Result
+import kotlin.contracts.ExperimentalContracts
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -8,7 +11,13 @@ import kotlinx.coroutines.flow.map
 
 // Created by usdaves(Usmon Abdurakhmanov) on 2/22/2023
 
-inline fun <T> Result<T>.onEach(block: Result<T>.() -> Unit) = also(block)
+@OptIn(ExperimentalContracts::class)
+inline fun <T> Result<T>.onEach(block: Result<T>.() -> Unit): Result<T> {
+  contract {
+    callsInPlace(block, InvocationKind.EXACTLY_ONCE)
+  }
+  return also(block)
+}
 
 inline fun <T> Result<T>.onSuccess(block: Result.Success<T>.() -> Unit) = onEach {
   if (this is Result.Success) block(this)

@@ -41,4 +41,5 @@ dependencies {
   kapt(libs.hilt.compiler)
 
   implementation(libs.firebase.auth)
+  implementation(libs.firebase.firestore)
 }
