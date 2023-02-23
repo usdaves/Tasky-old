@@ -1,14 +1,12 @@
 package io.usdaves.core
 
 import android.content.Context
-import android.os.Parcelable
 import androidx.annotation.StringRes
-import kotlinx.parcelize.Parcelize
+import java.io.Serializable
 
 // Created by usdaves(Usmon Abdurakhmanov) on 2/17/2023
 
-@Parcelize
-sealed class UiText : Parcelable {
+sealed class UiText : Serializable {
 
   data class StringResource internal constructor(@StringRes val resId: Int) : UiText()
   data class StringValue internal constructor(val value: String) : UiText()

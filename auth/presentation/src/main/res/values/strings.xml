@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Sign In -->
+  <string name="sign_in_title">Welcome back!</string>
+  <string name="sign_in_your_profile">Sign In your profile</string>
+  <string name="sign_in">Sign In</string>
+  <string name="sign_up">Sign Up</string>
+  <string name="sign_in_sign_in_with_google">Sign In with Google</string>
+  <string name="sign_in_sign_up_with_google">Sign Up with Google</string>
+  <string name="sign_in_or_continue_with">or continue with</string>
+  <string name="display_name">Display Name</string>
+  <string name="email_address">Email Address</string>
+  <string name="password">Password</string>
+
+  <!-- Sign Up -->
+  <string name="sign_up_title">Welcome!</string>
+  <string name="sign_up_your_profile">Create your profile</string>
+  <string name="sign_up_sign_in_with_google">Sign Up with Google</string>
+
+  <string name="empty_display_name">Display name could not be empty!</string>
+  <string name="empty_email">Email could not be empty!</string>
+  <string name="empty_password">Password could not be empty!</string>
+  <string name="invalid_credentials">Email or password went wrong. Please, try again!</string>
+  <string name="no_network_connection">Could not connect to the server. Please, check you internet connection!</string>
+  <string name="signing_with_google_not_supported">Signing with Google not supported yet. Please, use your email address to sign in/up</string>
+</resources>
