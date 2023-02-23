@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalContracts::class)
+
 package io.usdaves.core.util
 
 import io.usdaves.core.Result
@@ -11,7 +13,6 @@ import kotlinx.coroutines.flow.map
 
 // Created by usdaves(Usmon Abdurakhmanov) on 2/22/2023
 
-@OptIn(ExperimentalContracts::class)
 inline fun <T> Result<T>.onEach(block: Result<T>.() -> Unit): Result<T> {
   contract {
     callsInPlace(block, InvocationKind.EXACTLY_ONCE)
@@ -19,17 +20,32 @@ inline fun <T> Result<T>.onEach(block: Result<T>.() -> Unit): Result<T> {
   return also(block)
 }
 
-inline fun <T> Result<T>.onSuccess(block: Result.Success<T>.() -> Unit) = onEach {
-  if (this is Result.Success) block(this)
+inline fun <T> Result<T>.onSuccess(block: Result.Success<T>.() -> Unit): Result<T> {
+  contract {
+    callsInPlace(block, InvocationKind.AT_MOST_ONCE)
+  }
+  return onEach {
+    if (this is Result.Success) block(this)
+  }
 }
 
-inline fun <T> Result<T>.onFailure(block: Result.Failure.() -> Unit) = onEach {
-  if (this is Result.Failure) block()
+inline fun <T> Result<T>.onFailure(block: Result.Failure.() -> Unit): Result<T> {
+  contract {
+    callsInPlace(block, InvocationKind.AT_MOST_ONCE)
+  }
+  return onEach {
+    if (this is Result.Failure) block()
+  }
 }
 
-inline fun <T, R> Result<T>.map(transform: (T) -> R): Result<R> = when (this) {
-  is Result.Success -> Result.success(transform(data))
-  is Result.Failure -> Result.failure(throwable)
+inline fun <T, R> Result<T>.map(transform: (T) -> R): Result<R> {
+  contract {
+    callsInPlace(transform, InvocationKind.EXACTLY_ONCE)
+  }
+  return when (this) {
+    is Result.Success -> Result.success(transform(data))
+    is Result.Failure -> Result.failure(throwable)
+  }
 }
 
 fun <T> Flow<T>.asResultFlow(): Flow<Result<T>> = map { data -> Result.success(data) }
