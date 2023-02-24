@@ -13,9 +13,10 @@ import io.usdaves.core.ActivityContentSetter
 object DebugModule {
 
   @Provides
-  fun provideActivityContentSetter(): ActivityContentSetter =
-    ActivityContentSetter { activity, view ->
+  fun provideActivityContentSetter(): ActivityContentSetter {
+    return ActivityContentSetter { activity, view ->
       // TODO: Setup Debug Drawer library here...
       activity.setContentView(view)
     }
+  }
 }

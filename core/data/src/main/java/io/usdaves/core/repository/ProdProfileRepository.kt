@@ -5,11 +5,10 @@ import io.usdaves.core.preferences.ProfilePreferences
 import io.usdaves.core.remote.ProfileApi
 import io.usdaves.core.util.resultOf
 import io.usdaves.logger.Logger
-import javax.inject.Inject
 
 // Created by usdaves(Usmon Abdurakhmanov) on 2/18/2023
 
-internal class ProdProfileRepository @Inject constructor(
+internal class ProdProfileRepository(
   private val profileApi: ProfileApi,
   private val profilePreferences: ProfilePreferences,
   private val logger: Logger,

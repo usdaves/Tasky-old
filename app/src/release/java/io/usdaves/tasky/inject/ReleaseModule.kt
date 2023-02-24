@@ -13,8 +13,9 @@ import io.usdaves.core.ActivityContentSetter
 object ReleaseModule {
 
   @Provides
-  fun provideActivityContentSetter(): ActivityContentSetter =
-    ActivityContentSetter { activity, view ->
+  fun provideActivityContentSetter(): ActivityContentSetter {
+    return ActivityContentSetter { activity, view ->
       activity.setContentView(view)
     }
+  }
 }
