@@ -2,10 +2,11 @@ plugins {
   id 'com.android.library'
   id 'org.jetbrains.kotlin.android'
   id 'org.jetbrains.kotlin.kapt'
+  id 'com.google.gms.google-services'
 }
 
 android {
-  namespace 'io.usdaves.tasky.firebase'
+  namespace 'io.usdaves.tasky'
   compileSdk 33
 
   defaultConfig {
