@@ -1,4 +1,4 @@
-package io.usdaves.auth.fake
+package io.usdaves.test
 
 import io.usdaves.logger.Logger
 

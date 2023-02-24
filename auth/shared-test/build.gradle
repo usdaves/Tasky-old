@@ -1,11 +1,10 @@
 plugins {
   id 'com.android.library'
   id 'org.jetbrains.kotlin.android'
-  id 'org.jetbrains.kotlin.kapt'
 }
 
 android {
-  namespace 'io.usdaves.auth.domain'
+  namespace 'io.usdaves.test'
   compileSdk 33
 
   defaultConfig {
@@ -32,15 +31,7 @@ android {
 }
 
 dependencies {
-  implementation(project(":core:data"))
+  implementation(project(":auth:domain"))
   implementation(project(":core:domain"))
   implementation(project(":core:logger"))
-
-  implementation(libs.hilt.android)
-  kapt(libs.hilt.compiler)
-
-  testImplementation(project(":auth:shared-test"))
-  testImplementation(libs.junit)
-  testImplementation(libs.kotlinx.coroutines.test)
-  testImplementation(libs.google.truth)
 }

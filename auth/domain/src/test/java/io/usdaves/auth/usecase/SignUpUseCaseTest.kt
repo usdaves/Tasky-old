@@ -1,10 +1,10 @@
 package io.usdaves.auth.usecase
 
 import com.google.common.truth.Truth.assertThat
-import io.usdaves.auth.fake.FakeAuthRepository
-import io.usdaves.auth.fake.FakeEmailMatcher
-import io.usdaves.auth.fake.FakeLogger
 import io.usdaves.auth.repository.SignUpResult
+import io.usdaves.test.FakeAuthRepository
+import io.usdaves.test.FakeEmailMatcher
+import io.usdaves.test.FakeLogger
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Before

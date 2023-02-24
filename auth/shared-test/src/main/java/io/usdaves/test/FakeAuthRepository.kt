@@ -1,4 +1,4 @@
-package io.usdaves.auth.fake
+package io.usdaves.test
 
 import io.usdaves.auth.repository.AuthRepository
 import io.usdaves.auth.repository.SignInResult
