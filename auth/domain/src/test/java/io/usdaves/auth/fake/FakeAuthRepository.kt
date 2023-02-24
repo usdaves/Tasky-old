@@ -6,7 +6,7 @@ import io.usdaves.auth.repository.SignUpResult
 
 // Created by usdaves(Usmon Abdurakhmanov) on 2/24/2023
 
-internal class FakeAuthRepository : AuthRepository {
+class FakeAuthRepository : AuthRepository {
 
   override suspend fun signIn(email: String, password: String): SignInResult {
     return SignInResult.Success

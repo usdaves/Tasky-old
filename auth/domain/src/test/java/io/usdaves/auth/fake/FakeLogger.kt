@@ -4,7 +4,7 @@ import io.usdaves.logger.Logger
 
 // Created by usdaves(Usmon Abdurakhmanov) on 2/24/2023
 
-internal class FakeLogger : Logger {
+class FakeLogger : Logger {
   override fun setup(isDebugMode: Boolean) = Unit
   override fun v(message: String, vararg args: Any?) = Unit
   override fun v(t: Throwable, message: String, vararg args: Any?) = Unit

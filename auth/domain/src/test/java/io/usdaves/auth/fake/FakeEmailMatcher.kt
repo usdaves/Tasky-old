@@ -4,7 +4,7 @@ import io.usdaves.core.matcher.EmailMatcher
 
 // Created by usdaves(Usmon Abdurakhmanov) on 2/24/2023
 
-internal class FakeEmailMatcher : EmailMatcher {
+class FakeEmailMatcher : EmailMatcher {
 
   private var validationResult = true
 
