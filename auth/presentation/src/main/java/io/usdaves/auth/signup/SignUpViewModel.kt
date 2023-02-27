@@ -13,9 +13,9 @@ import io.usdaves.auth.usecase.SignUpUseCase.Companion.MAX_DISPLAY_NAME_LENGTH
 import io.usdaves.auth.usecase.SignUpUseCase.Companion.MAX_PASSWORD_LENGTH
 import io.usdaves.auth.usecase.SignUpUseCase.Companion.MIN_DISPLAY_NAME_LENGTH
 import io.usdaves.auth.usecase.SignUpUseCase.Companion.MIN_PASSWORD_LENGTH
-import io.usdaves.core.TaskyDispatchers
 import io.usdaves.core.UiText
 import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -25,7 +25,6 @@ private const val VIEW_STATE = "sign_up_view_state_key"
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
   private val signUpUseCase: SignUpUseCase,
-  private val dispatchers: TaskyDispatchers,
   private val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
@@ -60,7 +59,7 @@ class SignUpViewModel @Inject constructor(
   }
 
   fun onSignUpClicked() {
-    viewModelScope.launch(dispatchers.IO) {
+    viewModelScope.launch(Dispatchers.IO) {
       withLoadingViewState {
         val signUpResult = signUpUseCase(
           displayName = viewState.value.displayName,

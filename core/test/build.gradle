@@ -31,7 +31,10 @@ android {
 }
 
 dependencies {
-  implementation(libs.mockk)
+  api(libs.mockk)
+  api(libs.junit)
+  api(libs.kotlinx.coroutines.core)
+  api(libs.kotlinx.coroutines.test)
   implementation(project(":core:domain"))
   implementation(project(":core:logger"))
 }

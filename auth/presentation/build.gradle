@@ -47,6 +47,7 @@ dependencies {
 
   testImplementation project(":core:test")
   testImplementation project(":core:logger")
+  testImplementation(libs.mockk)
   testImplementation(libs.junit)
   testImplementation(libs.kotlinx.coroutines.test)
   testImplementation(libs.google.truth)

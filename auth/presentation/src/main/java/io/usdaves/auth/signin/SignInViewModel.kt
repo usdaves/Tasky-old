@@ -9,9 +9,9 @@ import io.usdaves.auth.repository.SignInResult
 import io.usdaves.auth.signin.SignInViewEvent.NavigateViewSignUp
 import io.usdaves.auth.signin.SignInViewEvent.ShowMessage
 import io.usdaves.auth.usecase.SignInUseCase
-import io.usdaves.core.TaskyDispatchers
 import io.usdaves.core.UiText
 import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -21,7 +21,6 @@ private const val VIEW_STATE = "sign_in_view_state_key"
 @HiltViewModel
 internal class SignInViewModel @Inject constructor(
   private val signInUseCase: SignInUseCase,
-  private val dispatchers: TaskyDispatchers,
   private val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
@@ -49,7 +48,7 @@ internal class SignInViewModel @Inject constructor(
   }
 
   fun onSignInClicked() {
-    viewModelScope.launch(dispatchers.IO) {
+    viewModelScope.launch(Dispatchers.IO) {
       withLoadingViewState {
         val signInResult = signInUseCase(
           email = viewState.value.email,
