@@ -1,4 +1,4 @@
-package io.usdaves.test
+package io.usdaves.auth.fake
 
 import io.mockk.coEvery
 import io.mockk.coVerify

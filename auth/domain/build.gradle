@@ -32,14 +32,14 @@ android {
 }
 
 dependencies {
-  implementation(project(":core:data"))
-  implementation(project(":core:domain"))
-  implementation(project(":core:logger"))
+  implementation project(":core:data")
+  implementation project(":core:domain")
+  implementation project(":core:logger")
 
   implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
 
-  testImplementation(project(":auth:shared-test"))
+  testImplementation project(":core:test")
   testImplementation(libs.junit)
   testImplementation(libs.mockk)
   testImplementation(libs.kotlinx.coroutines.test)

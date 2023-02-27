@@ -1,4 +1,4 @@
-package io.usdaves.test
+package io.usdaves.test.fake
 
 import io.mockk.every
 import io.mockk.mockk

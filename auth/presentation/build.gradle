@@ -36,17 +36,17 @@ android {
 }
 
 dependencies {
-  implementation(project(":auth:data"))
-  implementation(project(":auth:domain"))
-  implementation(project(":core:data"))
-  implementation(project(":core:domain"))
-  implementation(project(":core:presentation"))
+  implementation project(":auth:data")
+  implementation project(":auth:domain")
+  implementation project(":core:data")
+  implementation project(":core:domain")
+  implementation project(":core:presentation")
 
   implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
 
-  testImplementation(project(":auth:shared-test"))
-  testImplementation(project(":core:logger"))
+  testImplementation project(":core:test")
+  testImplementation project(":core:logger")
   testImplementation(libs.junit)
   testImplementation(libs.kotlinx.coroutines.test)
   testImplementation(libs.google.truth)
