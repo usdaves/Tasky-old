@@ -1,16 +1,20 @@
 package io.usdaves.auth.fake
 
+import io.mockk.every
+import io.mockk.mockk
 import io.usdaves.core.matcher.EmailMatcher
 
 // Created by usdaves(Usmon Abdurakhmanov) on 2/24/2023
 
-class FakeEmailMatcher : EmailMatcher {
+class FakeEmailMatcher {
 
-  private var validationResult = true
+  val mock: EmailMatcher = mockk()
 
-  override fun matches(emailAddress: CharSequence): Boolean = validationResult
-
-  fun setValidationResult(isEmailValid: Boolean) {
-    validationResult = isEmailValid
+  fun mockForResult(
+    isValidEmail: Boolean,
+  ) {
+    every {
+      mock.matches(any())
+    } returns isValidEmail
   }
 }
