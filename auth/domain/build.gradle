@@ -39,6 +39,7 @@ dependencies {
   implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
 
+  testImplementation(project(":auth:shared-test"))
   testImplementation(libs.junit)
   testImplementation(libs.mockk)
   testImplementation(libs.kotlinx.coroutines.test)
