@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package io.usdaves.test.fake
 
 import kotlinx.coroutines.Dispatchers
