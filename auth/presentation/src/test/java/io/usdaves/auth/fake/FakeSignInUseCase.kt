@@ -11,11 +11,13 @@ class FakeSignInUseCase {
 
   val mock: SignInUseCase = mockk()
 
-  fun mockInvokeForResult(
+  fun mockWithCredentialsForResult(
+    email: String,
+    password: String,
     result: SignInResult,
   ) {
     coEvery {
-      mock.invoke(any(), any())
+      mock.invoke(email, password)
     } returns result
   }
 }
