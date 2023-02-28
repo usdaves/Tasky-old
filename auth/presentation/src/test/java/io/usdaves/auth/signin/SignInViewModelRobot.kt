@@ -52,7 +52,7 @@ internal class SignInViewModelRobot {
     viewModel.viewState.test {
       action()
       for (viewState in viewStates) {
-        assertThat(viewState).isEqualTo(awaitItem())
+        assertThat(awaitItem()).isEqualTo(viewState)
       }
       cancelAndConsumeRemainingEvents()
     }
@@ -65,7 +65,7 @@ internal class SignInViewModelRobot {
     viewModel.viewEvent.test {
       action()
       for (viewEvent in viewEvents) {
-        assertThat(viewEvent).isEqualTo(awaitItem())
+        assertThat(awaitItem()).isEqualTo(viewEvent)
       }
       cancelAndConsumeRemainingEvents()
     }
