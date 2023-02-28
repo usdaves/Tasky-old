@@ -37,11 +37,11 @@ internal class SignInViewModelRobot {
     viewModel.onPasswordChanged(password)
   }
 
-  fun signInButtonClicked() = apply {
+  fun clickSignInButton() = apply {
     viewModel.onSignInClicked()
   }
 
-  fun signUpButtonClicked() = apply {
+  fun clickSignUpButton() = apply {
     viewModel.onSignUpClicked()
   }
 

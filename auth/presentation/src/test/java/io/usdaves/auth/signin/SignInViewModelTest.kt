@@ -67,7 +67,7 @@ internal class SignInViewModelTest {
       ).expectViewStates(
         initialState, submittingWithLoadingState, stateWithEmailError,
       ) {
-        signInButtonClicked()
+        clickSignInButton()
       }
   }
 
@@ -100,7 +100,7 @@ internal class SignInViewModelTest {
         stateWithPasswordErrorWithoutLoading,
       ) {
         enterEmail(defaultEmail)
-        signInButtonClicked()
+        clickSignInButton()
       }
   }
 
@@ -121,7 +121,7 @@ internal class SignInViewModelTest {
       ) {
         enterEmail(invalidEmail)
         enterPassword(defaultPassword)
-        signInButtonClicked()
+        clickSignInButton()
       }
   }
 
@@ -142,7 +142,7 @@ internal class SignInViewModelTest {
       ) {
         enterEmail(defaultEmail)
         enterPassword(shortPassword)
-        signInButtonClicked()
+        clickSignInButton()
       }
   }
 
@@ -163,7 +163,7 @@ internal class SignInViewModelTest {
       ) {
         enterEmail(defaultEmail)
         enterPassword(longPassword)
-        signInButtonClicked()
+        clickSignInButton()
       }
   }
 
@@ -184,7 +184,7 @@ internal class SignInViewModelTest {
       ) {
         enterEmail(defaultEmail)
         enterPassword(defaultPassword)
-        signInButtonClicked()
+        clickSignInButton()
       }
   }
 
@@ -216,7 +216,7 @@ internal class SignInViewModelTest {
       ) {
         enterEmail(defaultEmail)
         enterPassword(defaultPassword)
-        signInButtonClicked()
+        clickSignInButton()
       }
   }
 
@@ -228,7 +228,7 @@ internal class SignInViewModelTest {
       .expectViewEvents(
         viewEventWithNavigateToSignUpEvent,
       ) {
-        signUpButtonClicked()
+        clickSignUpButton()
       }
   }
 }
