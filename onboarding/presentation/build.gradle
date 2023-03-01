@@ -39,18 +39,10 @@ dependencies {
   implementation project(":core:data")
   implementation project(":core:domain")
   implementation project(":core:presentation")
-
   implementation(libs.hilt.android)
   kapt(libs.hilt.compiler)
-
-
-  def nav_version = "2.5.3"
-
-  // Kotlin
-  implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-  implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-
-
+  implementation(libs.androidx.navigation.fragment)
+  implementation(libs.androidx.navigation.ui)
   testImplementation project(":core:test")
   testImplementation project(":core:logger")
   testImplementation(libs.mockk)

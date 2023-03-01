@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.skydoves.bindables.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.usdaves.auth.presentation.R
@@ -24,7 +25,7 @@ class SignInFragment : BindingFragment<FragmentSignInBinding>(R.layout.fragment_
     collectLatest(viewModel.viewEvent) { event ->
       when (event) {
         SignInViewEvent.NavigateViewSignUp -> {
-          Toast.makeText(requireContext(), "Navigate to SignUp event", Toast.LENGTH_SHORT).show()
+          findNavController().navigate(R.id.action_to_fragment_sign_in)
         }
 
         is SignInViewEvent.ShowMessage -> {
