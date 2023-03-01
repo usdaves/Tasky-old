@@ -9,8 +9,10 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.usdaves.core.preferences.AuthPreferences
 import io.usdaves.core.preferences.DatastoreAuthPreferences
+import io.usdaves.core.preferences.DatastoreOnboardingPreferences
 import io.usdaves.core.preferences.DatastoreProfilePreferences
 import io.usdaves.core.preferences.DatastoreThemePreferences
+import io.usdaves.core.preferences.OnboardingPreferences
 import io.usdaves.core.preferences.ProfilePreferences
 import io.usdaves.core.preferences.ThemePreferences
 import io.usdaves.logger.Logger
@@ -35,6 +37,12 @@ object PreferencesModule {
     @ApplicationContext context: Context,
     logger: Logger,
   ): AuthPreferences = DatastoreAuthPreferences(context.dataStore, logger)
+
+  @Provides
+  fun provideOnboardingPreferences(
+    @ApplicationContext context: Context,
+    logger: Logger,
+  ): OnboardingPreferences = DatastoreOnboardingPreferences(context.dataStore, logger)
 
   @Provides
   fun provideThemePreferences(
