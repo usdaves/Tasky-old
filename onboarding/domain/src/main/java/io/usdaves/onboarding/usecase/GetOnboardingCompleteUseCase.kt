@@ -16,7 +16,7 @@ class GetOnboardingCompleteUseCase @Inject constructor(
     logger.i("GetOnboardingCompleteUseCase class instance created")
   }
 
-  suspend operator fun invoke(isOnboardingCompleted: Boolean = true) {
+  suspend operator fun invoke(isOnboardingCompleted: Boolean) {
     onboardingPreferences.setOnboardingCompleted(isOnboardingCompleted)
   }
 }

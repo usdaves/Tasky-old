@@ -8,5 +8,5 @@ interface OnboardingPreferences {
 
   val isOnboardingCompleted: Flow<Boolean>
 
-  suspend fun setOnboardingCompleted(isOnboardingCompleted: Boolean = true)
+  suspend fun setOnboardingCompleted(isOnboardingCompleted: Boolean)
 }
