@@ -1,0 +1,47 @@
+plugins {
+  id 'com.android.library'
+  id 'org.jetbrains.kotlin.android'
+  id 'org.jetbrains.kotlin.kapt'
+}
+
+android {
+  namespace 'io.usdaves.onboarding.domain'
+  compileSdk 33
+
+  defaultConfig {
+    minSdk 23
+    targetSdk 33
+
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    consumerProguardFiles "consumer-rules.pro"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_11
+    targetCompatibility JavaVersion.VERSION_11
+  }
+  kotlinOptions {
+    jvmTarget = JavaVersion.VERSION_11.toString()
+  }
+}
+
+dependencies {
+
+  implementation project(":core:domain")
+  implementation project(":core:data")
+  implementation project(":core:logger")
+
+  testImplementation(libs.junit)
+  testImplementation(libs.google.truth)
+  testImplementation(libs.mockk)
+  testImplementation project(":core:test")
+
+  implementation(libs.hilt.android)
+  kapt(libs.hilt.compiler)
+}
